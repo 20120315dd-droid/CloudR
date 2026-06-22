@@ -1,17 +1,25 @@
 {
   "expo": {
-    "name": "CloudR",
+    "name": "云去除",
     "slug": "CloudR",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "primaryColor": "#1565C0",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.cloudr.app"
     },
     "android": {
+      "package": "com.cloudr.app",
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_MEDIA_AUDIO",
+        "android.permission.READ_MEDIA_VIDEO"
+      ],
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#1565C0",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -20,6 +28,22 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "允许「云去除」访问相册以选择需要去云的遥感图像。"
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "允许「云去除」访问相册。",
+          "savePhotosPermission": "允许「云去除」将去云结果保存到相册。",
+          "isAccessMediaLocationEnabled": false
+        }
+      ]
+    ]
   }
 }

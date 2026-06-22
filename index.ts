@@ -1,3 +1,12 @@
+// jpeg-js 在编码时依赖 Node 的 Buffer，而 React Native 运行时默认没有全局 Buffer，
+// 这里在应用最早期注入 buffer polyfill，保证去云引擎能正常编码图片。
+import { Buffer as NodeBuffer } from 'buffer';
+
+const globalAny = globalThis as unknown as { Buffer?: unknown };
+if (!globalAny.Buffer) {
+  globalAny.Buffer = NodeBuffer;
+}
+
 import { registerRootComponent } from 'expo';
 
 import App from './App';
